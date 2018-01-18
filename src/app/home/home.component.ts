@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MainTableComponent} from '../main-table/main-table.component';
 
 @Component({
   selector: 'app-home',
