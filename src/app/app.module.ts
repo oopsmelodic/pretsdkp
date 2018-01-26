@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { MainTableComponent } from './main-table/main-table.component';
-import {Ng2TableModule} from 'ng2-table';
 import { AboutComponent } from './about/about.component';
+import {HttpClientModule} from '@angular/common/http';
+import {Ng2SmartTableModule} from 'ng2-smart-table';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,8 +28,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     SuiModule,
-    Ng2TableModule,
-    RouterModule.forRoot(appRoutes)
+    Ng2SmartTableModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
