@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {LocalDataSource} from 'ng2-smart-table';
 import {Regspot} from '../model/regspot';
 import {log} from 'util';
-import {LocalDataSource} from 'ng2-smart-table';
 import {Http} from '@angular/http';
 import {ApiResponse} from '../model/api-response';
 
@@ -25,10 +25,18 @@ export class MainTableComponent implements OnInit {
         title: 'ID',
         filter: false
       },
-      name: {
-        title: 'Full Name',
+      channels_id: {
+        title: 'Channel',
         filter: false,
       },
+      spots_id: {
+        title: 'Spot',
+        filter: false,
+      },
+      time_stamp: {
+        title: 'Time Create',
+        filter: false
+      }
     },
     attr: {
       class: 'ui table'
@@ -38,8 +46,8 @@ export class MainTableComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.source = new LocalDataSource();
-    this.http.get<Response>('http://api.localhost/channels/list?start=0&length=10').subscribe(response => {
-      log(response.data);
+    this.http.get<Response>('http://api.localhost/channelspot/list?start=0&length=9999').subscribe(response => {
+      console.log(response.data);
       this.source.load(response.data);
     });
   }
