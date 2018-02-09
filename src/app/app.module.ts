@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import {SuiModule} from 'ng2-semantic-ui';
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
-import { MainTableComponent } from './main-table/main-table.component';
-import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MainTableComponent } from './components/main-table/main-table.component';
+import { AboutComponent } from './pages/about/about.component';
 import {HttpClientModule} from '@angular/common/http';
 import {Ng2SmartTableModule} from 'ng2-smart-table';
+import { RowActionsComponent } from './components/main-table/row-actions/row-actions.component';
+import {ApiService} from './services/api.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,7 +25,11 @@ const appRoutes: Routes = [
     NotFoundComponent,
     HomeComponent,
     MainTableComponent,
-    AboutComponent
+    AboutComponent,
+    RowActionsComponent
+  ],
+  entryComponents: [
+    RowActionsComponent, MainTableComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
